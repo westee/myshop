@@ -1,10 +1,11 @@
 import 'css/common.css'
 import './category.css'
 import url from 'js/api.js'
-import footnav from 'components/footnav'
+import 'js/mixin.js'
 
 import Vue from 'vue'
 import Axios from 'axios'
+import mixin from "../../modules/js/mixin";
 
 new Vue({
   el: '#app',
@@ -59,20 +60,21 @@ new Vue({
       }).then((res)=>{
         this.rankData = res.data;
       })
+    },
+
+    /**
+     * 点击跳转到列表
+     * @list object
+     */
+    toSearch(list){
+      location.href = `search.html?keyword=${list.title}&id=${list.id}`
     }
   },
   created(){
     this.getCategoryTopList()
     this.getSecondList(0, this.currentCategory)
   },
-  components:{
-    footnav
-  },
-  filters:{
-    priceFilter(price){
-      return price.toFixed(2)
-    }
-  }
+  mixins:[mixin]
 })
 
 

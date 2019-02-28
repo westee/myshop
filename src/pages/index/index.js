@@ -53,7 +53,6 @@ new Vue({
     getSwiper(){
       Axios.get(url.indexSwiper)
         .then((res)=> {
-          console.log(res)
           this.swiperList = res.data
         })
     }

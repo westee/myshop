@@ -75,8 +75,7 @@
         >
           <li v-for="list in productList" :key="list.id">
             <div class="goods-item">
-              <a
-                href="https://h5.youzan.com/v2/showcase/goods?alias=2fwig6rnqfq6m&amp;source=yzapp&amp;f_platform=yzapp">
+              <a :href="'goods.html?id='+list.id">
                 <div class="thumb img-box">
                   <img class="fadeIn" :src="list.image">
                 </div>
@@ -89,9 +88,8 @@
           </li>
         </ul>
         <div class="loading-more" v-show="loading && !allLoading"><span></span></div>
-        <div class="line-block line-block-gray" v-show="allLoading" style="margin: 40px 10px 40px 10px;">
-          <div class="lineblock-title"><span class="lineblock-font">已经加载全部数据</span></div>
-        </div>
+        <div class="list-finished" v-show="allLoading">已经没有更多了</div>
+
       </div>
       <div class="js-show-find category-guid" style="display: none;"></div>
     </div>
