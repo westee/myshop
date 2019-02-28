@@ -114,13 +114,16 @@ new Vue({
     addCart(){
       axios.post(url.addCart)
         .then(res=>{
-          if(res.data == 200){
+          console.log(res.data)
+          if(res.data.code == 200){
+            console.log(1);
+            
             this.showMask = false
             this.showCart = true
-            this.showCartTi = true
+            this.showCartTip = true
             setTimeout(() => {
               this.showCartTip = false
-            }, timeout);
+            }, 1000);
           }
         })
     }
