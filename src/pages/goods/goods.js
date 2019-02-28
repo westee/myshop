@@ -116,14 +116,14 @@ new Vue({
         .then(res=>{
           console.log(res.data)
           if(res.data.code == 200){
-            console.log(1);
-            
             this.showMask = false
             this.showCart = true
             this.showCartTip = true
             setTimeout(() => {
               this.showCartTip = false
             }, 1000);
+          } else {
+            Toast('添加失败，请稍后再试');
           }
         })
     }
