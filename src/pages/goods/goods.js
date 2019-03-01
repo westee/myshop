@@ -98,9 +98,7 @@ new Vue({
     /**
      * 加减购买数量
      */
-    changeSkuNum(val){
-      console.log(1);
-      
+    changeSkuNum(val){      
       if(val < 0 && this.skuNum == 1 ){ //点击减一并且当前选择数量为1
         return 
       } else{
@@ -114,7 +112,6 @@ new Vue({
     addCart(){
       axios.post(url.addCart)
         .then(res=>{
-          console.log(res.data)
           if(res.data.code == 200){
             this.showMask = false
             this.showCart = true

@@ -46,7 +46,6 @@ let app = new Vue({
         })
     },
     move(){
-      console.log(document.documentElement.scrollTop)
       this.isShow = document.documentElement.scrollTop > 100;
     },
     clickToTop(){
