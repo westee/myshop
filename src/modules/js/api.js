@@ -8,6 +8,11 @@ let url = {
   categoryRank: '/category/rank', //热销商品 && 热销店铺 && 关键字
   searchList: '/search/list', //商品列表
   addCart: '/pro/addcart', //添加到购物车
+
+  cartList: '/cart/list', //购物车列表
+  cartReduce: '/cart/multireduce', //删除减少一个商品
+  cartRemove: '/cart/remove', //删除一个商品
+  cartMuiltR: '/cart/remove' //删除多个商品
 }
 let host = 'https://nei.netease.com/api/apimock/92deac019f949d0a0d609dd8570da724/0419'
 
