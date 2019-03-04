@@ -21,7 +21,7 @@ let app = new Vue({
       set(newValue) {
         this.cartList.forEach((shopitem) => {
           shopitem.checked = newValue
-          shopitem.goodsList.forEach((goodsitem)=>{
+          shopitem.goodsList.forEach((goodsitem) => {
             goodsitem.checked = newValue
           })
         })
@@ -38,13 +38,13 @@ let app = new Vue({
     },
 
     // 选中的列表
-    selectList(){
-      if(this.cartList && this.cartList.length){
+    selectList() {
+      if (this.cartList && this.cartList.length) {
         let totalPrice = 0
         let arr = []
-        this.cartList.forEach((shop)=>{
-          shop.goodsList.forEach((goods)=>{
-            if(goods.checked){
+        this.cartList.forEach((shop) => {
+          shop.goodsList.forEach((goods) => {
+            if (goods.checked) {
               totalPrice += goods.price * goods.num
               arr.push(goods)
             }
@@ -71,6 +71,8 @@ let app = new Vue({
         tempList.forEach((shops) => {
           //给商店添加选中信息
           shops.checked = true
+          shops.editing = false
+          shops.editMsg = '编辑'
           shops.goodsList.forEach((goods) => {
             //给商品添加选中信息
             goods.checked = true
@@ -101,6 +103,19 @@ let app = new Vue({
     // 点击全选按钮
     clickSelectAll() {
       this.allSelect = !this.allSelect
+    },
+
+    // 编辑状态
+    edit(shop, shopIndex) {
+      shop.editing = !shop.editing
+      shop.editMsg = shop.editing ? '完成' : '编辑'
+
+      this.cartList.forEach((shopitem, index) => {
+        if (index != shopIndex) {
+          shopitem.editing = !shop.editing
+          shopitem.editMsg = shopitem.editing ? '编辑' : ''
+        }
+      })
     }
 
   },
