@@ -9,28 +9,69 @@ import Api from 'js/api.js'
 
 let app = new Vue({
   el: '.container',
-  data:{
+  data: {
     cartList: null, //购物车商品列表
+    totalNum: 0,
+    totalPrice: 0,
   },
-  computed:{
+  computed: {
+    // 全选
+    allSelect: {
+      //点击全选时的操作
+      set(newValue) {
+        this.cartList.forEach((shopitem) => {
+          shopitem.checked = newValue
+          shopitem.goodsList.forEach((goodsitem)=>{
+            goodsitem.checked = newValue
+          })
+        })
+      },
+      // 获取全选的状态
+      get() {
+        if (this.cartList && this.cartList.length) {
+          return this.cartList.every((shopitem) => {
+            return shopitem.checked
+          })
+        }
+        return false
+      }
+    },
 
+    // 选中的列表
+    selectList(){
+      if(this.cartList && this.cartList.length){
+        let totalPrice = 0
+        let arr = []
+        this.cartList.forEach((shop)=>{
+          shop.goodsList.forEach((goods)=>{
+            if(goods.checked){
+              totalPrice += goods.price * goods.num
+              arr.push(goods)
+            }
+          })
+        })
+        this.totalPrice = totalPrice
+        return arr
+      }
+      return []
+    }
   },
-  created(){
+  created() {
     this.getCartList()
   },
-  methods:{
+  methods: {
     /**
      * 获取购物车中的商品数据
      */
-    getCartList(){
-      Axios.get(Api.cartList,{
+    getCartList() {
+      Axios.get(Api.cartList, {
         id: 1
-      }).then((res)=>{
+      }).then((res) => {
         let tempList = res.data.cartList
-        tempList.forEach((shops)=>{
+        tempList.forEach((shops) => {
           //给商店添加选中信息
           shops.checked = true
-          shops.goodsList.forEach((goods)=>{
+          shops.goodsList.forEach((goods) => {
             //给商品添加选中信息
             goods.checked = true
           })
@@ -43,12 +84,25 @@ let app = new Vue({
      * 选中或反选商品
      * @goods Object 单个商品的data
      */
-    selectGood(goods){
+    selectGood(goods, shop) {
       goods.checked = !goods.checked
+      shop.checked = shop.goodsList.every((goodsitem) => {
+        return goodsitem.checked
+      })
     },
 
+    selectShop(shop) {
+      shop.checked = !shop.checked
+      shop.goodsList.forEach((goodsitem) => {
+        goodsitem.checked = shop.checked
+      })
+    },
+
+    // 点击全选按钮
+    clickSelectAll() {
+      this.allSelect = !this.allSelect
+    }
 
   },
-  mixins:[Mixin]
+  mixins: [Mixin]
 })
-
