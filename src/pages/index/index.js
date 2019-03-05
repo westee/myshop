@@ -7,9 +7,9 @@ import url from 'js/api'
 import footnav from 'components/footnav'
 import swiper from 'components/swiper'
 
-import { InfiniteScroll } from 'mint-ui';
+import { InfiniteScroll,Indicator } from 'mint-ui';
+import 'mint-ui/lib/style.min.css'
 Vue.use(InfiniteScroll);
-
 new Vue({
   el: "#app",
   data:{

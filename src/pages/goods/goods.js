@@ -7,10 +7,8 @@ import './goods_sku.css'
 import './goods_base.css'
 import './goods_transition.css'
 
-import { Indicator } from 'mint-ui'; //加载提示框
 import 'mint-ui/lib/style.min.css'
-Indicator.open('加载中');
-import { Toast } from 'mint-ui'; //加载toast
+import { Toast,Indicator } from 'mint-ui'; //加载toast 提示框
 
 import  Vue from 'vue'
 import url from 'js/api.js'

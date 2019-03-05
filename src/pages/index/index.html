@@ -23,82 +23,83 @@
   <title>发现朋友圈的推荐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
-      [v-cloak]{
-        display: none;
-      }
-    </style>
+    [v-cloak] {
+      display: none;
+    }
+
+  </style>
 </head>
 
 <body class=" " style="min-height: 860px;">
-<div id="app" v-cloak>
-  <div class="container with-bottom-nav" style="min-height: 667px;">
-    <div class="content">
-      <div class="js-image-swiper
+  <div id="app" v-cloak >
+    <div class="container with-bottom-nav" style="min-height: 667px;">
+      <div class="content">
+        <div class="js-image-swiper
  custom-image-swiper  custom-image-swiper-single" data-images="1">
-        <swiper :swiper="swiperList" v-if="swiperList"></swiper>
-      </div>
-      <div class="section-title">优店推荐</div>
-      <div class="section-content shops">
-        <div class="shop-wrap">
-          <div class="shop-item">
-            <a href="https://h5.koudaitong.com/v2/showcase/feature?alias=zjtozpgn">
-              <img class="fadeIn"
-                   src="https://img.yzcdn.cn/upload_files/2016/09/23/FgQUVNXnvpFKFl1DIN2LXhPA1cxy.png?imageView2/2/w/300/h/0/q/75/format/png">
-            </a>
-          </div>
-          <div class="shop-item">
-            <a href="https://h5.koudaitong.com/v2/feature/1e22e3vtu">
-              <img class="fadeIn"
-                   src="https://img.yzcdn.cn/upload_files/2016/08/03/FqNGnCQS1eq9nIhRg48E_UfFf9K2.png?imageView2/2/w/300/h/0/q/75/format/png">
-            </a>
-          </div>
-          <div class="shop-item">
-            <a href="https://h5.koudaitong.com/v2/feature/8oups7zk">
-              <img class="fadeIn"
-                   src="https://img.yzcdn.cn/upload_files/2016/08/05/Fv5hhMZrtPZQWE7fape0ddEYtSuy.png?imageView2/2/w/300/h/0/q/75/format/png">
-            </a>
-          </div>
+          <swiper :swiper="swiperList" v-if="swiperList" style="min-height: 172px;"></swiper>
         </div>
-      </div>
-      <div class="section-content daily">
-        <ul>
-        </ul>
-      </div>
-      <div class="line-block line-block-gray">
-        <div class="lineblock-title">
-          <span class="lineblock-font">最热商品推荐</span>
-        </div>
-      </div>
-      <div class="hot-goods js-waterfull-wrap" data-src="">
-        <ul class="js-list js-lazy" data-src=""
-            v-infinite-scroll="getIndexList"
-            infinite-scroll-disabled="loading"
-            infinite-scroll-distance="50"
-            infinite-scroll-immediate-check="false"
-        >
-          <li v-for="list in productList" :key="list.id">
-            <div class="goods-item">
-              <a :href="'goods.html?id='+list.id">
-                <div class="thumb img-box">
-                  <img class="fadeIn" :src="list.image">
-                </div>
-                <div class="detail">
-                  <div class="title">{{list.title}}</div>
-                  <div class="price">￥{{list.price}}</div>
-                </div>
+        <div class="section-title">优店推荐</div>
+        <div class="section-content shops">
+          <div class="shop-wrap">
+            <div class="shop-item">
+              <a href="https://h5.koudaitong.com/v2/showcase/feature?alias=zjtozpgn">
+                <img class="fadeIn" src="https://img.yzcdn.cn/upload_files/2016/09/23/FgQUVNXnvpFKFl1DIN2LXhPA1cxy.png?imageView2/2/w/300/h/0/q/75/format/png">
               </a>
             </div>
-          </li>
-        </ul>
-        <div class="loading-more" v-show="loading && !allLoading"><span></span></div>
-        <div class="list-finished" v-show="allLoading">已经没有更多了</div>
+            <div class="shop-item">
+              <a href="https://h5.koudaitong.com/v2/feature/1e22e3vtu">
+                <img class="fadeIn" src="https://img.yzcdn.cn/upload_files/2016/08/03/FqNGnCQS1eq9nIhRg48E_UfFf9K2.png?imageView2/2/w/300/h/0/q/75/format/png">
+              </a>
+            </div>
+            <div class="shop-item">
+              <a href="https://h5.koudaitong.com/v2/feature/8oups7zk">
+                <img class="fadeIn" src="https://img.yzcdn.cn/upload_files/2016/08/05/Fv5hhMZrtPZQWE7fape0ddEYtSuy.png?imageView2/2/w/300/h/0/q/75/format/png">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="section-content daily">
+          <ul>
+          </ul>
+        </div>
+        <div class="line-block line-block-gray">
+          <div class="lineblock-title">
+            <span class="lineblock-font">最热商品推荐</span>
+          </div>
+        </div>
+        <div class="hot-goods js-waterfull-wrap" data-src="">
+          <ul class="js-list js-lazy" data-src="" v-infinite-scroll="getIndexList" infinite-scroll-disabled="loading"
+            infinite-scroll-distance="50" infinite-scroll-immediate-check="false">
+            <li v-for="list in productList" :key="list.id">
+              <div class="goods-item">
+                <a :href="'goods.html?id='+list.id">
+                  <div class="thumb img-box">
+                    <img class="fadeIn" :src="list.image">
+                  </div>
+                  <div class="detail">
+                    <div class="title">{{list.title}}</div>
+                    <div class="price">￥{{list.price}}</div>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+          <div class="loading-more" v-show="loading && !allLoading"><span></span></div>
+          <div class="list-finished" v-show="allLoading">已经没有更多了</div>
 
+        </div>
+        <div class="js-show-find category-guid" style="display: none;"></div>
       </div>
-      <div class="js-show-find category-guid" style="display: none;"></div>
+    </div>
+    <footnav></footnav>
+    <div class="mint-indicator" v-show="productList === null">
+      <div class="mint-indicator-wrapper" style="padding: 20px;"><span class="mint-indicator-spin">
+          <div class="mint-spinner-snake" style="border-top-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); height: 32px; width: 32px;"></div>
+        </span> <span class="mint-indicator-text" style="">加载中</span></div>
+      <div class="mint-indicator-mask"></div>
     </div>
   </div>
-  <footnav></footnav>
-</div>
+
 </body>
 
 </html>
