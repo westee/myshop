@@ -144,10 +144,9 @@
             <div class="bottom-cart clear-fix">
               <div class="select-all" @click="clickSelectAll">
                 <!-- checked 选中  allSelect==》计算属性-->
-                <span class="check "  :class="{checked: allSelect}" v-show="!editShop"></span>
+                <span class="check 1"  :class="{checked: allSelect}" v-show="!editShop"></span>
                 <!-- 删除时的 checked 选中 allSelectRemove==》计算属性-->
-                <span class="check " :class="{checked: allSelectRemove}" v-show="editShop"></span>
-                 
+                <span class="check 2" :class="{checked: allSelectRemove}" v-show="editShop"></span>
                 全选
               </div>
               <!-- 显示状态 -->

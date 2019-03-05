@@ -146,7 +146,7 @@ let app = new Vue({
 
     // 点击全选按钮
     clickSelectAll() {
-      let attr = this.editShop ? 'allSelectRemove' : 'checked'
+      let attr = this.editShop ? 'allSelectRemove' : 'allSelect'
       this[attr] = !this[attr]
     },
 
