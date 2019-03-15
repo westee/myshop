@@ -33,6 +33,7 @@ module.exports = {
       'components': '@/components'
     }
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {

@@ -48,7 +48,8 @@
                 <ul class="js-list block block-list block-list-cart border-0">
                   <!-- editing 是编辑状态 -->
                   <li class="block-item block-item-cart" :class="{editing: shop.editing}" v-for="(goods, goodsIndex) in shop.goodsList"
-                    :key="goodsIndex">
+                    :key="goodsIndex" @touchstart="start($event, goods)" @touchend="end($event, shop, goods, shopIndex, goodsIndex)"
+                    :ref="'goods-' + shopIndex + '-' + goodsIndex">
                     <div>
                       <!-- checked 选中 -->
                       <div class="check-container"  @click="selectGood(goods,shop)">
@@ -71,11 +72,9 @@
                           <!-- 显示状态 -->
                           <div class="num" v-show="!shop.editing">
                             ×<span class="num-txt">{{goods.num}}</span>
-                            <!---->
                           </div>
                           <!-- 编辑状态 -->
                           <div class="num" v-show="shop.editing">
-                            <!---->
                             <div class="quantity">
                               <button type="button" class="minus" :class="{disabled: goods.num == 1}"></button>
                               <input type="text" pattern="[0-9]*" class="txt" v-model="goods.num">
@@ -89,7 +88,8 @@
                         </div>
                         <div class="error-box"></div>
                       </div>
-                      <div class="delete-btn" v-show="shop.editing" 
+                      <!-- 单个商品上的删除按钮 -->
+                      <div class="delete-btn" 
                       @click="goodsRemove(shop,shopIndex, goods, goodsIndex)"><span>删除</span></div>
                     </div>
                   </li>
