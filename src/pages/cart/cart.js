@@ -289,14 +289,13 @@ let app = new Vue({
     end(event, shop, good, shopIndex, goodsIndex){
       let endX = event.changedTouches[0].clientX
       // 确定删除键的位置
-      let left = '0px'
+      let left = '0'
       if(good.startX - endX > 60){
         left = '-60px'
       }
       if(endX - good.startX  > 60){
         left = '0px'
       }
-      
       Velocity(this.$refs['goods-' + shopIndex + '-' + goodsIndex], {left})
     },
   },

@@ -48,7 +48,7 @@
                 <ul class="js-list block block-list block-list-cart border-0">
                   <!-- editing 是编辑状态 -->
                   <li class="block-item block-item-cart" :class="{editing: shop.editing}" v-for="(goods, goodsIndex) in shop.goodsList"
-                    :key="goodsIndex" @touchstart="start($event, goods)" @touchend="end($event, shop, goods, shopIndex, goodsIndex)"
+                    :key="goods.id" @touchstart="start($event, goods)" @touchend="end($event, shop, goods, shopIndex, goodsIndex)"
                     :ref="'goods-' + shopIndex + '-' + goodsIndex">
                     <div>
                       <!-- checked 选中 -->
