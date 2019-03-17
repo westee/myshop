@@ -1,6 +1,8 @@
 import './cart.css'
 import './cart_base.css'
 import './cart_trade.css'
+import cartService from 'js/cartService'
+import fetch from 'js/fetch'
 
 import Vue from 'vue'
 import Axios from 'axios'
@@ -175,6 +177,7 @@ let app = new Vue({
     // 检测输入的产品数量
     goodsReduce(goods) {
       if (goods.num === '1') return
+
       Axios.get(Api.cartReduce)
         .then((res) => {
           if (Number(res.data.code) === 200) {
@@ -183,13 +186,18 @@ let app = new Vue({
         })
     },
 
+    // 增加商品数量
     goodsAdd(goods) {
-      Axios.get(Api.cartReduce)
-        .then((res) => {
-          if (Number(res.data.code) === 200) {
-            goods.num++
-          }
-        })
+      cartService.add(goods)
+      // Axios.post(Api.addNum,{
+      //   id: goods.id,
+      //   number: 1
+      // })
+      //   .then((res) => {
+      //     if (Number(res.data.code) === 200) {
+      //       goods.num++
+      //     }
+      //   })
     },
 
     // 删除单个商品
