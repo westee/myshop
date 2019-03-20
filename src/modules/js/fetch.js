@@ -5,6 +5,7 @@ function fetch(url,data){
   return new Promise((resolve,reject)=>{
     Axios.post(url,data)
       .then((res)=>{
+        
         let status = res.data.code
         if(status === 200){
           resolve(res)
