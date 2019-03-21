@@ -16,9 +16,9 @@ let url = {
   cartMuiltRemove: '/cart/remove', //删除多个商品
 
   addressList: '/address/list', // 地址列表
-  addressAdd: '', // 增加地址
+  addressAdd: '/address/add', // 增加地址
   addressRemove: '', // 删除地址
-  addressUpdate: '', // 更新地址
+  addressUpdate: '/address/add', // 更新地址
   addressSetDefault: '', // 设置默认地址
 }
 let host = 'https://nei.netease.com/api/apimock/92deac019f949d0a0d609dd8570da724/0419'
