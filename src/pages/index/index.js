@@ -7,6 +7,8 @@ import url from 'js/api'
 import footnav from 'components/footnav'
 import swiper from 'components/swiper'
 
+import bus from 'js/bus.js'
+
 import { InfiniteScroll,Indicator } from 'mint-ui';
 import 'mint-ui/lib/style.min.css'
 Vue.use(InfiniteScroll);
@@ -18,7 +20,10 @@ new Vue({
     allLoading: false,
     swiperList: null,
     perPage: 6,
-    pageNum: 1
+    pageNum: 1,
+    obj:{
+      age: 23
+    }
   },
   methods:{
     getIndexList(){
@@ -55,10 +60,16 @@ new Vue({
         .then((res)=> {
           this.swiperList = res.data
         })
-    }
+    },
+    // childEve(val){
+    //   console.log('子组件的数据是：'+val)
+    // }
 
   },
   created(){
+    bus.$on('change',(val)=>{
+      console.log('我是$on:'+val)
+    })
     this.getIndexList()
     this.getSwiper()
   },

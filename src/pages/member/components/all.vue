@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import Address from 'js/addressService.js'
 
 export default {
-  data(){
-    return {
-      list: null
+
+  computed: {
+    list () {
+      return this.$store.state.list
     }
   },
   methods:{
@@ -36,10 +36,7 @@ export default {
     }
   },
   created(){
-    Address.getlist().then((res)=>{
-       res.data.addresslist[0].default = true
-       this.list = res.data.addresslist
-    })
+    this.$store.dispatch('getAddressData')
   }
 }
 </script>

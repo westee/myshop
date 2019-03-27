@@ -13,6 +13,7 @@
 
 <script>
   import qs from 'qs'
+  import bus from 'js/bus.js'
 
   let {index} = qs.parse(location.search.substring(1))
 
@@ -37,11 +38,19 @@
   ]
   export default {
     name: "footnav",
+    props:['obj'],
     data() {
       return {
         navConfig,
-        currentIndex: parseInt(index) || 0
+        currentIndex: parseInt(index) || 0,
+        ob: JSON.parse(JSON.stringify(this.obj) )
       }
+    },
+    created(){
+      setTimeout(()=>{
+        this.ob.age = 18;
+        bus.$emit('change','还没找到工作')
+      },2000)
     },
     methods: {
       changeIndex(item, index) {
