@@ -54,10 +54,10 @@
     </div>
     <div v-show="type == 'edit'">
       <div class="block section js-delete block-control-btn">
-        <div class="block-item c-red center">删除</div>
+        <div class="block-item c-red center" @click="remove()">删除</div>
       </div>
       <div class="block stick-bottom-row center js-save-default">
-        <button class="btn btn-standard js-save-default-btn">设为默认收货地址</button>
+        <button class="btn btn-standard js-save-default-btn" @click="setDefault">设为默认收货地址</button>
       </div>
     </div>
   </div>

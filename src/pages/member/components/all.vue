@@ -2,11 +2,11 @@
   <div class="container" style="min-height: 597px;">
     <div class="block-list address-list section section-first js-no-webview-block">
       <a @click="toEdit(address)"
-        class="block-item js-address-item address-item" :class="{'address-item-default':address.default}"
+        class="block-item js-address-item address-item" :class="{'address-item-default':address.isDefault}"
         href="javascript:;" v-for="address in list" :key="address.id"
       >
         <div class="address-title">{{address.name}} {{address.tel}}</div>
-        <p>{{address.provinceName}}{{address.cityName}}{{address.districtName}}</p>
+        <p>{{address.address}}</p>
         <a class="address-edit" >修改</a>
       </a>
       
@@ -36,7 +36,10 @@ export default {
     }
   },
   created(){
-    this.$store.dispatch('getAddressData')
+    // 防止重复加载
+    if(!this.list){
+      this.$store.dispatch('getAddressData')
+    }
   }
 }
 </script>

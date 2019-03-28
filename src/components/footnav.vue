@@ -49,7 +49,7 @@
     created(){
       setTimeout(()=>{
         this.ob.age = 18;
-        bus.$emit('change','还没找到工作')
+        bus.$emit('change','2333')
       },2000)
     },
     methods: {

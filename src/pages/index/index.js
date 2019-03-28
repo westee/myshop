@@ -68,7 +68,7 @@ new Vue({
   },
   created(){
     bus.$on('change',(val)=>{
-      console.log('我是$on:'+val)
+      // console.log('我是$on:'+val)
     })
     this.getIndexList()
     this.getSwiper()

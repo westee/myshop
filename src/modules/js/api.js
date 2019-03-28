@@ -17,9 +17,9 @@ let url = {
 
   addressList: '/address/list', // 地址列表
   addressAdd: '/address/add', // 增加地址
-  addressRemove: '', // 删除地址
+  addressRemove: '/address/add', // 删除地址
   addressUpdate: '/address/add', // 更新地址
-  addressSetDefault: '', // 设置默认地址
+  addressSetDefault: '/address/add', // 设置默认地址
 }
 let host = 'https://nei.netease.com/api/apimock/92deac019f949d0a0d609dd8570da724/0419'
 
